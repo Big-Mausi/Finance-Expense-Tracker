@@ -1,0 +1,154 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Segoe UI", sans-serif;
+}
+
+body {
+  background: #f4f7fb;
+}
+
+.container {
+  max-width: 850px;
+  margin: 40px auto;
+  padding: 20px;
+}
+
+h1 {
+  text-align: center;
+  color: #1e293b;
+  margin-bottom: 10px;
+  font-size: 2.3rem;
+}
+
+.subtitle {
+  text-align: center;
+  color: #64748b;
+  margin-bottom: 30px;
+}
+
+/* ================= FORM ================= */
+
+.expense-form {
+  background: white;
+  padding: 25px;
+  border-radius: 14px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+  margin-bottom: 30px;
+}
+
+.expense-form h2 {
+  margin-bottom: 20px;
+}
+
+.expense-form input {
+  width: 100%;
+  padding: 13px;
+  margin-bottom: 15px;
+  border: 1px solid #d1d5db;
+  border-radius: 8px;
+  font-size: 15px;
+}
+
+.expense-form input:focus {
+  outline: none;
+  border-color: #2563eb;
+}
+
+.expense-form button {
+  width: 100%;
+  padding: 13px;
+  border: none;
+  border-radius: 8px;
+  background: #2563eb;
+  color: white;
+  font-size: 16px;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+.expense-form button:hover {
+  background: #1d4ed8;
+}
+
+.expense-form button:disabled {
+  background: #94a3b8;
+  cursor: not-allowed;
+}
+
+/* ================ TOTAL ================= */
+
+.total-card {
+  background: linear-gradient(135deg, #2563eb, #1d4ed8);
+  color: white;
+  padding: 25px;
+  border-radius: 14px;
+  margin-bottom: 30px;
+  text-align: center;
+  box-shadow: 0 10px 20px rgba(37, 99, 235, 0.25);
+}
+
+.total-card h2 {
+  margin-bottom: 10px;
+  font-size: 20px;
+}
+
+.total-card h1 {
+  color: white;
+  font-size: 38px;
+}
+
+/* ================ EXPENSE CARD ================= */
+
+.expense-card {
+  background: white;
+  border-radius: 14px;
+  padding: 20px;
+  margin-bottom: 20px;
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.08);
+}
+
+.expense-card h3 {
+  color: #1e293b;
+  margin-bottom: 12px;
+}
+
+.expense-card p {
+  color: #475569;
+  margin: 8px 0;
+}
+
+/* ================= BUTTONS ================= */
+
+.actions {
+  display: flex;
+  gap: 12px;
+  margin-top: 18px;
+}
+
+.actions button {
+  flex: 1;
+  border: none;
+  padding: 11px;
+  border-radius: 8px;
+  color: white;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+.actions button:first-child {
+  background: #f59e0b;
+}
+
+.actions button:first-child:hover {
+  background: #d97706;
+}
+
+.actions button:last-child {
+  background: #dc2626;
+}
+
+.actions button:last-child:hover {
+  background: #b91c1c;
+}

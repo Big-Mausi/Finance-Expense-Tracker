@@ -1,0 +1,48 @@
+
+
+services:
+  db:
+    image: postgres:16
+    container_name: expense_tracker_db
+    restart: always
+
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_DB: expense_tracker
+
+    ports:
+      - "5432:5432"
+
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+
+  backend:
+    build: ./backend
+    container_name: expense_tracker_backend
+
+    restart: always
+
+    ports:
+      - "4005:4005"
+
+    depends_on:
+      - db
+
+    environment:
+      DATABASE_URL: postgresql://postgres:postgres@db:5432/expense_tracker
+
+  frontend:
+    build: ./frontend
+    container_name: expense_tracker_frontend
+
+    restart: always
+
+    ports:
+      - "5173:5173"
+
+    depends_on:
+      - backend
+
+volumes:
+  postgres_data:
