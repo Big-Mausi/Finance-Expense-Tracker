@@ -5,6 +5,7 @@ import api from "./api";
 import ExpenseForm from "./components/ExpenseForm";
 import ExpenseList from "./components/ExpenseList";
 import TotalExpenses from "./components/TotalExpenses";
+import Budget from "./components/Budget";
 
 export interface Expense {
   id: number;
@@ -55,6 +56,8 @@ function App() {
         totalExpenses={totalExpenses}
         balance={balance}
       />
+
+      <Budget />
 
       <ExpenseForm
         fetchExpenses={fetchExpenses}
