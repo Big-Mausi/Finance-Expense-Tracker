@@ -21,23 +21,27 @@ function ExpenseList({
       await api.delete(`/expenses/${id}`);
       await fetchExpenses();
     } catch (error) {
-      console.error("Failed to delete expense", error);
+      console.error("Failed to delete transaction", error);
     }
   };
 
   return (
-    <div>
-      <h2>Expenses</h2>
+    <div className="expense-list">
+      <h2>Transactions</h2>
 
       {expenses.length === 0 ? (
         <div className="expense-card">
-          <p>No expenses added yet.</p>
+          <p>No transactions added yet.</p>
         </div>
       ) : (
         expenses.map((expense) => (
           <div className="expense-card" key={expense.id}>
             <h3>{expense.title}</h3>
 
+            <p>
+              <strong>Type:</strong>{" "}
+              {expense.type === "INCOME" ? "Income" : "Expense"}
+            </p>
             <p>
               <strong>Amount:</strong> ₦{expense.amount.toLocaleString()}
             </p>

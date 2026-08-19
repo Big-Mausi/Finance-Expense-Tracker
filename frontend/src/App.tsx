@@ -10,6 +10,7 @@ export interface Expense {
   id: number;
   title: string;
   amount: number;
+  type: "INCOME" | "EXPENSE";
   category: string;
   createdAt: string;
 }
@@ -31,21 +32,35 @@ function App() {
     void fetchExpenses();
   }, []);
 
-  const total = expenses.reduce((sum, expense) => sum + expense.amount, 0);
+  const totalIncome = expenses
+    .filter((expense) => expense.type === "INCOME")
+    .reduce((sum, expense) => sum + expense.amount, 0);
+
+  const totalExpenses = expenses
+    .filter((expense) => expense.type === "EXPENSE")
+    .reduce((sum, expense) => sum + expense.amount, 0);
+
+  const balance = totalIncome - totalExpenses;
 
   return (
     <div className="container">
-      <h1> Expense Tracker</h1>
+      <h1>Finance Expense Tracker</h1>
 
-      <p className="subtitle">Keep track of your daily expenses</p>
+      <p className="subtitle">
+        Keep track of your income and daily expenses in one place
+      </p>
+
+      <TotalExpenses
+        totalIncome={totalIncome}
+        totalExpenses={totalExpenses}
+        balance={balance}
+      />
 
       <ExpenseForm
         fetchExpenses={fetchExpenses}
         editingExpense={editingExpense}
         setEditingExpense={setEditingExpense}
       />
-
-      <TotalExpenses total={total} />
 
       <ExpenseList
         expenses={expenses}
