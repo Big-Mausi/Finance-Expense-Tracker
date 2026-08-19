@@ -1,33 +1,48 @@
 import type { Request, Response } from "express";
 import prisma from "../prisma.js";
+import { error } from "node:console";
 
 export const getExpenses = async (req: Request, res: Response) => {
   try {
     const expenses = await prisma.expense.findMany();
+
+    console.log("Fetched expenses:", error);
+
     res.json(expenses);
   } catch (error) {
+    console.error("Failed to fetch expenses:", error);
     res.status(500).json({
       message: "Failed to fetch expenses",
+      error: error instanceof Error ? error.message : error,
     });
   }
 };
 
 export const createExpense = async (req: Request, res: Response) => {
   try {
-    const { title, amount, category } = req.body;
+    console.log("Request body:", req.body);
+    const { title, amount, category, type } = req.body;
+
+    console.log("type received:", type);
 
     const expense = await prisma.expense.create({
       data: {
         title,
         amount,
         category,
+        type,
       },
     });
 
+    console.log("Saved expense:", expense);
+
     res.status(201).json(expense);
   } catch (error) {
+    console.error("Failed to create expense:", error);
+
     res.status(500).json({
       message: "Failed to create expense",
+      error: error instanceof Error ? error.message : error,
     });
   }
 };
@@ -35,7 +50,7 @@ export const createExpense = async (req: Request, res: Response) => {
 export const updateExpense = async (req: Request, res: Response) => {
   try {
     const { id } = req.params;
-    const { title, amount, category } = req.body;
+    const { title, amount, category, type } = req.body;
 
     const expense = await prisma.expense.update({
       where: {
@@ -45,6 +60,7 @@ export const updateExpense = async (req: Request, res: Response) => {
         title,
         amount,
         category,
+        type,
       },
     });
 

@@ -7,10 +7,11 @@
 
 body {
   background: #f4f7fb;
+  color: #1e293b;
 }
 
 .container {
-  max-width: 850px;
+  max-width: 1000px;
   margin: 40px auto;
   padding: 20px;
 }
@@ -28,7 +29,32 @@ h1 {
   margin-bottom: 30px;
 }
 
-/* ================= FORM ================= */
+/* ================= SUMMARY ================= */
+
+.summary-cards {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+}
+.total-card {
+  background: white;
+  padding: 25px;
+  border-radius: 14px;
+  text-align: center;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+}
+
+.total-card h2 {
+  margin-bottom: 10px;
+  font-size: 18px;
+  columns: #64748b;
+}
+
+.total-card h1 {
+  color: #1e293b;
+  font-size: 32px;
+}
+
+/* ================ FORM ================= */
 
 .expense-form {
   background: white;
@@ -40,18 +66,22 @@ h1 {
 
 .expense-form h2 {
   margin-bottom: 20px;
+  color: #1e293b;
 }
 
-.expense-form input {
+.expense-form input,
+.expense-form select {
   width: 100%;
   padding: 13px;
   margin-bottom: 15px;
   border: 1px solid #d1d5db;
   border-radius: 8px;
   font-size: 15px;
+  background: white;
 }
 
-.expense-form input:focus {
+.expense-form input:focus,
+.expense-form select:focus {
   outline: none;
   border-color: #2563eb;
 }
@@ -75,28 +105,6 @@ h1 {
 .expense-form button:disabled {
   background: #94a3b8;
   cursor: not-allowed;
-}
-
-/* ================ TOTAL ================= */
-
-.total-card {
-  background: linear-gradient(135deg, #2563eb, #1d4ed8);
-  color: white;
-  padding: 25px;
-  border-radius: 14px;
-  margin-bottom: 30px;
-  text-align: center;
-  box-shadow: 0 10px 20px rgba(37, 99, 235, 0.25);
-}
-
-.total-card h2 {
-  margin-bottom: 10px;
-  font-size: 20px;
-}
-
-.total-card h1 {
-  color: white;
-  font-size: 38px;
 }
 
 /* ================ EXPENSE CARD ================= */
@@ -151,4 +159,30 @@ h1 {
 
 .actions button:last-child:hover {
   background: #b91c1c;
+}
+
+/* ================= MOBILE ================= */
+
+@media (max-width: 600px) {
+  .summary-cards {
+    grid-template-columns: 1fr;
+  }
+
+  .container {
+    margin: 20px auto;
+    padding: 15px;
+  }
+
+  h1 {
+    font-size: 1.8rem;
+  }
+
+  .expense-form,
+  .total-card {
+    padding: 20px;
+  }
+
+  .actions {
+    flex-direction: column;
+  }
 }

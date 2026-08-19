@@ -12,10 +12,16 @@ datasource db {
   provider = "postgresql"
 }
 
-model Expense{
-id          Int         @id @default(autoincrement())
+enum TransactionType {
+  INCOME
+  EXPENSE
+}
+
+model Expense {
+id          Int                   @id @default(autoincrement())
 title       String
 amount      Float
+type        TransactionType       @default(EXPENSE)
 category    String      
-createdAt   DateTime    @default(now())
+createdAt   DateTime              @default(now())
 }
